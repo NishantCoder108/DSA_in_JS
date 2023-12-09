@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Array</title>
+  </head>
+  <body>
+    <h1>Dynamic Array in JavaScript</h1>
+    <script>
+      let arr = [];
+      arr.push("Ram");
+      arr.push("Mohan");
+      arr.push("Sohan");
+
+      for (let i = 0; i < 108; i++) {
+        document.write("<br/>" + i + "<br/");
+        arr.push(Math.random());
+      }
+
+      document.write("<br/>" + arr.join(" 👉 ") + "<br/>");
+      console.log(arr.join("  "));
+    </script>
+  </body>
+</html>
