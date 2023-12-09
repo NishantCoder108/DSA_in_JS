@@ -7,8 +7,8 @@ let obj = {
   Pen: 4,
 };
 
-console.log({ hashmap });
-console.log({ obj });
+// console.log({ hashmap });
+// console.log({ obj });
 
 const arr = [
   "tomotto",
@@ -29,7 +29,9 @@ const hashCount = (arr) => {
     if (!hash[arr[i]]) {
       hash[arr[i]] = 1;
     } else {
-      hash[arr[i]] = hash[arr[i]] + 1;
+      console.log(hash[arr[i]]);
+      //   hash[arr[i]] = hash[arr[i]] + 1;
+      hash[arr[i]]++;
     }
   }
 
@@ -37,3 +39,6 @@ const hashCount = (arr) => {
 };
 
 console.log(hashCount(arr)); //{ tomotto: 1, potatto: 3, Carrot: 1, Pen: 4 }
+console.log(Boolean(undefined));
+console.log(Boolean(null));
+console.log(Boolean({}));
