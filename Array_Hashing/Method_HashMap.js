@@ -29,8 +29,9 @@ const hashCount = (arr) => {
     if (!hash[arr[i]]) {
       hash[arr[i]] = 1;
     } else {
-      console.log(hash[arr[i]]);
+      //   console.log(hash[arr[i]]);
       //   hash[arr[i]] = hash[arr[i]] + 1;
+
       hash[arr[i]]++;
     }
   }
@@ -39,6 +40,39 @@ const hashCount = (arr) => {
 };
 
 console.log(hashCount(arr)); //{ tomotto: 1, potatto: 3, Carrot: 1, Pen: 4 }
-console.log(Boolean(undefined));
-console.log(Boolean(null));
-console.log(Boolean({}));
+// console.log(Boolean(undefined));
+// console.log(Boolean(null));
+// console.log(Boolean({}));
+
+/**
+ * Problem , we have json,that is comming from backend , we want to sort by branch
+ */
+const json = [
+  { name: "Ram", branch: "civil" },
+  { name: "Elon", branch: "civil" },
+  { name: "Usha", branch: "civil" },
+  { name: "Mohan", branch: "Mechanical" },
+  { name: "Sohan", branch: "CS" },
+  { name: "Nishant", branch: "ECE" },
+];
+
+const sortByBranch = (arr) => {
+  const hash = {};
+
+  for (let objIdx = 0; objIdx < arr.length; objIdx++) {
+    if (!hash[arr[objIdx].branch]) {
+      //   console.log("AAA", [arr[objIdx].name]);
+
+      hash[arr[objIdx].branch] = [arr[objIdx].name];
+    } else {
+      //   console.log("AAABBB", [...arr[objIdx].name]);
+      //   console.log(hash[arr[objIdx].branch]);
+
+      hash[arr[objIdx].branch].push(arr[objIdx].name);
+    }
+  }
+
+  return hash;
+};
+
+console.log(sortByBranch(json));
