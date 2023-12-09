@@ -76,3 +76,41 @@ const sortByBranch = (arr) => {
 };
 
 console.log(sortByBranch(json));
+
+/**
+ * Problem 3: We have string , you just find , maximum repeated letter
+ *
+ * eg. alpha ---> a
+ */
+
+const str = "alpha";
+
+const maxRepLetter = (str) => {
+  let hash = {};
+
+  for (let i = 0; i < str.length; i++) {
+    if (!hash[str[i]]) {
+      hash[str[i]] = 1;
+    } else {
+      hash[str[i]]++;
+    }
+  }
+
+  console.log({ hash });
+
+  //find maximum repetitive letter
+
+  let maxCharVal = 0;
+  let repChar = "";
+
+  for (let key in hash) {
+    if (hash[key] > maxCharVal) {
+      maxCharVal = hash[key];
+      repChar = key;
+    }
+  }
+
+  return repChar;
+};
+
+console.log(maxRepLetter(str));
