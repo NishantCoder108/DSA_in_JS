@@ -114,3 +114,42 @@ const maxRepLetter = (str) => {
 };
 
 console.log(maxRepLetter(str));
+
+/**
+ * Practice test of for-in loop and for-of loop
+ *
+ * in-loop ---> for key finding in mostly obj
+ * of-loop ---> for value find in arr
+ */
+
+const forInloop = (arr) => {
+  const hash = {};
+
+  for (let el in arr) {
+    console.log(el);
+    if (!hash[el]) {
+      hash[el] = 1;
+    } else {
+      hash[el]++;
+    }
+  }
+
+  return hash;
+};
+const forOfloop = (arr) => {
+  const hash = {};
+
+  for (let el of arr) {
+    console.log(el);
+    if (!hash[el]) {
+      hash[el] = 1;
+    } else {
+      hash[el]++;
+    }
+  }
+
+  return hash;
+};
+
+console.log(forInloop(arr));
+console.log(forOfloop(arr));
