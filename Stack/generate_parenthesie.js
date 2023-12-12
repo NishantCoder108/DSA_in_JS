@@ -1,6 +1,7 @@
 //https://leetcode.com/problems/generate-parentheses/submissions/
 
 /**
+ * Time Complexity O(4^n / √n) | Space O(4^n / √n)
  * @param {number} n
  * @return {string[]}
  */
