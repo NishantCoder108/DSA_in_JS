@@ -17,6 +17,7 @@ Here are my notes on different DSA topics:
 <!-- - [Array Notes](path/to/ArrayNotes.pdf) -->
 
 - [Array & Hashing Notes](Array_Hashing/Array_Hashing.pdf)
+- [Two Pointers](Two_Pointers/Concepts.md)
 
 ## Problems
 
