@@ -8,6 +8,7 @@ Welcome to my DSA practice repository! Here, you'll find my notes and solutions 
 - [Problems](#problems)
   - [Array Problems](#array-problems)
   - [Hashing Problems](#hashing-problems)
+  - [Stack Problems](#stack-problems)
 
 ## Notes
 
@@ -38,6 +39,13 @@ Problems focusing on the use of hash tables and hash functions.
 5. [Problem 5](Array_Hashing/top_k_frequent_ele.js) - Top K Frequent Element
 6. [Problem 6](Array_Hashing/two_sum.js) - Two Sum
 7. [Problem 7](Array_Hashing/valid_anagram.js) - Valid Anagrams
+
+### Stack Problems
+
+1. [Problem 1](Stack/valid_parenthesis.js) - Valid Parenthesis
+2. [Problem 2](Stack/min_stack.js) - Method Of Minstack
+3. [Problem 3](Stack/generate_parenthesie.js) - Generate Parenthesis
+4. [Problem 4](Stack/reverse_polish_notations.js) - Reverse Polish Notations
 
 ---
 
