@@ -5,21 +5,21 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
-  const hash = {};
+    const hash = {};
 
-  for (let el of strs) {
-    const sortEl = el.split("").sort().join("");
+    for (let el of strs) {
+        const sortEl = el.split("").sort().join("");
 
-    if (!hash[sortEl]) {
-      hash[sortEl] = [el];
-    } else {
-      hash[sortEl].push(el);
+        if (!hash[sortEl]) {
+            hash[sortEl] = [el];
+        } else {
+            hash[sortEl].push(el);
+        }
     }
-  }
 
-  console.log({ hash });
+    console.log({ hash });
 
-  return Object.values(hash);
+    return [...Object.values(hash)];
 };
 
 /**
@@ -60,3 +60,10 @@ const j = sortElS.join("");
 console.log({ sortEl });
 console.log({ sortElS });
 console.log({ j });
+
+const hash = { a: 1, b: 4 };
+
+let objHahs = [Object.values(hash)];
+console.log({ objHahs });
+
+console.log(""?.split("").sort().join(""));
