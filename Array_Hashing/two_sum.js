@@ -6,15 +6,15 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-  const hash = {};
+    const hash = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    if (target - nums[i] in hash) {
-      return [i, hash[target - nums[i]]];
+    for (let i = 0; i < nums.length; i++) {
+        if (target - nums[i] in hash) {
+            return [i, hash[target - nums[i]]];
+        }
+
+        hash[nums[i]] = i;
     }
-
-    hash[nums[i]] = i;
-  }
 };
 
 /**
@@ -49,3 +49,24 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
  */
+
+var twoSum = function (nums, target) {
+    const hash = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        const remainingEle = target - nums[i];
+
+        console.log({ remainingEle });
+        console.log({ hash });
+        console.log("s", hash[remainingEle]);
+        console.log("ss", remainingEle in hash);
+        if (remainingEle in hash) {
+            return [hash[remainingEle], i];
+        }
+
+        // console.log({ hash });
+        hash[nums[i]] = i;
+    }
+};
+
+twoSum([2, 7, 11, 15], 9);

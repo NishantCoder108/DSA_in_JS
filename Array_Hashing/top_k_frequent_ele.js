@@ -6,27 +6,51 @@
  * @return {number[]}
  */
 var topKFrequent = function (nums, k) {
-  const hash = {};
+    const hash = {};
 
-  for (let el of nums) {
-    if (!hash[el]) {
-      hash[el] = 1;
-    } else {
-      hash[el]++;
+    for (let i = 0; i < nums.length; i++) {
+        if (!hash[nums[i]]) {
+            hash[nums[i]] = 1;
+        } else {
+            hash[nums[i]]++;
+        }
     }
-  }
 
-  //find most frequent element
+    const sortArr = Object.entries(hash)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, k)
+        .map((a) => a[0]);
 
-  const ObjEnt = Object.entries(hash); //its will have both ,key and value
+    return sortArr;
+};
 
-  //now sort by value
-  const sortedEnt = ObjEnt.sort((a, b) => b[1] - a[1]);
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function (nums, k) {
+    const hash = {};
 
-  //Find most k frequent element
-  const kFrequentEle = sortedEnt.slice(0, k).map((pairs) => pairs[0]);
+    for (let el of nums) {
+        if (!hash[el]) {
+            hash[el] = 1;
+        } else {
+            hash[el]++;
+        }
+    }
 
-  return kFrequentEle;
+    //find most frequent element
+
+    const ObjEnt = Object.entries(hash); //its will have both ,key and value
+
+    //now sort by value
+    const sortedEnt = ObjEnt.sort((a, b) => b[1] - a[1]);
+
+    //Find most k frequent element
+    const kFrequentEle = sortedEnt.slice(0, k).map((pairs) => pairs[0]);
+
+    return kFrequentEle;
 };
 
 /**
@@ -66,23 +90,23 @@ It is guaranteed that the answer is unique.
  * @return {number[]}
  */
 var topKFrequent = function (nums, k) {
-  let frequency = {};
-  for (let i = 0; i < nums.length; i++) {
-    if (frequency.hasOwnProperty(nums[i])) frequency[nums[i]] += 1;
-    else frequency[nums[i]] = 1;
-  }
-  let result = Object.keys(frequency).map((key) => [
-    Number(key),
-    frequency[key],
-  ]);
-  let sortedResult = result.sort((a, b) => {
-    return b[1] - a[1];
-  });
-  let output = [];
-  for (let i = 0; i < k; i++) {
-    output.push(sortedResult[i][0]);
-  }
-  return output;
+    let frequency = {};
+    for (let i = 0; i < nums.length; i++) {
+        if (frequency.hasOwnProperty(nums[i])) frequency[nums[i]] += 1;
+        else frequency[nums[i]] = 1;
+    }
+    let result = Object.keys(frequency).map((key) => [
+        Number(key),
+        frequency[key],
+    ]);
+    let sortedResult = result.sort((a, b) => {
+        return b[1] - a[1];
+    });
+    let output = [];
+    for (let i = 0; i < k; i++) {
+        output.push(sortedResult[i][0]);
+    }
+    return output;
 };
 
 /**
@@ -95,57 +119,57 @@ var topKFrequent = function (nums, k) {
  */
 
 var topKFrequent = function (nums, k) {
-  const mp = new Map();
-  const arr = new Array(nums.length + 1).fill(0);
-  const ans = [];
+    const mp = new Map();
+    const arr = new Array(nums.length + 1).fill(0);
+    const ans = [];
 
-  nums.forEach((el) => {
-    const val = mp.get(el) || 0;
-    mp.set(el, val + 1);
-  });
+    nums.forEach((el) => {
+        const val = mp.get(el) || 0;
+        mp.set(el, val + 1);
+    });
 
-  for (let [key, value] of mp) {
-    const prev = arr[value] || [];
-    prev.push(key);
-    arr[value] = prev;
-  }
-
-  arr.reverse();
-  for (let el of arr) {
-    if (k < 1) break;
-    if (el) {
-      for (let el2 of el) {
-        ans.push(el2);
-        k--;
-      }
+    for (let [key, value] of mp) {
+        const prev = arr[value] || [];
+        prev.push(key);
+        arr[value] = prev;
     }
-  }
 
-  return ans;
+    arr.reverse();
+    for (let el of arr) {
+        if (k < 1) break;
+        if (el) {
+            for (let el2 of el) {
+                ans.push(el2);
+                k--;
+            }
+        }
+    }
+
+    return ans;
 };
 
 //Other Method
 function findTopKFrequent(nums, k) {
-  const hash = {};
+    const hash = {};
 
-  // Count the frequency of each element
-  for (let el of nums) {
-    hash[el] = (hash[el] || 0) + 1;
-  }
+    // Count the frequency of each element
+    for (let el of nums) {
+        hash[el] = (hash[el] || 0) + 1;
+    }
 
-  // Convert the hash into an array of [element, frequency] pairs
-  const frequencyArray = Object.entries(hash);
+    // Convert the hash into an array of [element, frequency] pairs
+    const frequencyArray = Object.entries(hash);
 
-  console.log({ frequencyArray });
-  // Sort the array based on frequency
-  const frqSort = frequencyArray.sort((a, b) => b[1] - a[1]);
+    console.log({ frequencyArray });
+    // Sort the array based on frequency
+    const frqSort = frequencyArray.sort((a, b) => b[1] - a[1]);
 
-  console.log({ frqSort });
-  // Extract the top k elements
-  const topK = frequencyArray.slice(0, k).map((pair) => pair[0]);
+    console.log({ frqSort });
+    // Extract the top k elements
+    const topK = frequencyArray.slice(0, k).map((pair) => pair[0]);
 
-  console.log({ topK });
-  return topK;
+    console.log({ topK });
+    return topK;
 }
 
 // Example usage
