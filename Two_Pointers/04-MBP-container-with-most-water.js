@@ -9,26 +9,55 @@
  * @return {number}
  */
 var maxArea = function (height) {
-  let left = 0;
-  let right = height.length - 1;
+    let leftIdx = 0;
+    let rightIdx = height.length - 1;
 
-  let maxArea = 0;
-  while (left < right) {
-    const width = right - left;
+    let maxArea = 0;
 
-    let minHeight = Math.min(height[left], height[right]);
+    while (leftIdx < rightIdx) {
+        let width = rightIdx - leftIdx;
+        let minHeight = Math.min(height[leftIdx], height[rightIdx]);
+        let tempArea = width * minHeight;
 
-    let currArea = width * minHeight;
-    maxArea = Math.max(currArea, maxArea);
+        if (maxArea < tempArea) {
+            maxArea = tempArea;
+        }
 
-    if (height[left] < height[right]) {
-      left++;
-    } else {
-      right--;
+        if (height[leftIdx] < height[rightIdx]) {
+            leftIdx++;
+        } else if (height[leftIdx] >= height[rightIdx]) {
+            rightIdx--;
+        }
     }
-  }
 
-  return maxArea;
+    return maxArea;
+};
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function (height) {
+    let left = 0;
+    let right = height.length - 1;
+
+    let maxArea = 0;
+    while (left < right) {
+        const width = right - left;
+
+        let minHeight = Math.min(height[left], height[right]);
+
+        let currArea = width * minHeight;
+        maxArea = Math.max(currArea, maxArea);
+
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return maxArea;
 };
 
 /**
