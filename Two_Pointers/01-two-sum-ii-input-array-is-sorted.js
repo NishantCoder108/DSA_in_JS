@@ -6,16 +6,35 @@
  * @return {number[]}
  */
 var twoSum = function (numbers, target) {
-  let leftIdx = 0;
-  let rightIdx = numbers.length - 1;
+    const hash = {};
 
-  while (leftIdx < rightIdx) {
-    const sum = numbers[leftIdx] + numbers[rightIdx];
+    for (let i = 0; i < numbers.length; i++) {
+        const remainEle = target - numbers[i];
 
-    if (sum === target) return [leftIdx + 1, rightIdx + 1];
-    else if (sum < target) leftIdx++;
-    else rightIdx--;
-  }
+        if (remainEle in hash) {
+            return [hash[remainEle] + 1, i + 1];
+        }
+
+        hash[numbers[i]] = i;
+    }
+};
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function (numbers, target) {
+    let leftIdx = 0;
+    let rightIdx = numbers.length - 1;
+
+    while (leftIdx < rightIdx) {
+        const sum = numbers[leftIdx] + numbers[rightIdx];
+
+        if (sum === target) return [leftIdx + 1, rightIdx + 1];
+        else if (sum < target) leftIdx++;
+        else rightIdx--;
+    }
 };
 
 /**
