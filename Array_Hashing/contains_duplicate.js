@@ -51,8 +51,17 @@ Constraints:
 1 <= nums.length <= 105
 -109 <= nums[i] <= 109
  */
-
-arr = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+const arr = [
+    "tomotto",
+    "potatto",
+    "potatto",
+    "potatto",
+    "Carrot",
+    "Pen",
+    "Pen",
+    "Pen",
+    "Pen",
+];
 const newArr = new Set(arr);
-
+console.log({ newArr });
 console.log("contains Duplicate", newArr.size !== arr.length);
