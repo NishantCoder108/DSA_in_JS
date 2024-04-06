@@ -1,6 +1,29 @@
 //https://leetcode.com/problems/product-of-array-except-self/
 
 /**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function (nums) {
+    //Use Prefix and postfix
+
+    const result = Array(nums.length).fill(1);
+
+    let prefix = 1;
+    let postfix = 1;
+
+    for (let i = 0; i < nums.length; i++) {
+        result[i] *= prefix;
+        prefix *= nums[i];
+
+        result[nums.length - 1 - i] *= postfix;
+        postfix *= nums[nums.length - 1 - i];
+    }
+
+    return result;
+};
+
+/**
  * Array
  * Time O(N) | Space O(N)
  * https://leetcode.com/problems/product-of-array-except-self/
@@ -8,20 +31,28 @@
  * @return {number[]}
  */
 function productExceptSelf(nums) {
-  const result = [];
-  let prefix = 1;
-  let postfix = 1;
+    const result = [];
+    let prefix = 1;
+    let postfix = 1;
 
-  for (let i = 0; i < nums.length; i++) {
-    result[i] = prefix;
-    prefix *= nums[i];
-  }
-  for (let i = nums.length - 2; i >= 0; i--) {
-    postfix *= nums[i + 1];
-    result[i] *= postfix;
-  }
+    for (let i = 0; i < nums.length; i++) {
+        result[i] = prefix;
+        prefix *= nums[i];
+    }
 
-  return result;
+    console.log({ prefix });
+    console.log({ postfix });
+    console.log({ result });
+
+    for (let i = nums.length - 2; i >= 0; i--) {
+        postfix *= nums[i + 1];
+        result[i] *= postfix;
+    }
+
+    console.log({ prefix });
+    console.log({ postfix });
+    console.log({ result });
+    return result;
 }
 
 console.log(productExceptSelf([1, 2, 3, 4]));
@@ -75,29 +106,52 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
  * @return {number[]}
  */
 var productExceptSelf1 = function (nums) {
-  const hash = {};
+    const hash = {};
 
-  function product(nums, exceptIdx) {
-    let total = 1;
+    function product(nums, exceptIdx) {
+        let total = 1;
+
+        for (let i = 0; i < nums.length; i++) {
+            if (i === exceptIdx) {
+                continue;
+            } else {
+                total *= nums[i];
+            }
+        }
+
+        return total;
+    }
 
     for (let i = 0; i < nums.length; i++) {
-      if (i === exceptIdx) {
-        continue;
-      } else {
-        total *= nums[i];
-      }
+        if (!hash[i]) {
+            hash[i] = product(nums, i);
+        }
     }
 
-    return total;
-  }
+    console.log({ hash });
 
-  for (let i = 0; i < nums.length; i++) {
-    if (!hash[i]) {
-      hash[i] = product(nums, i);
+    return Object.values(hash);
+};
+
+// Another method
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function (nums) {
+    const answer = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        let tempMultiply = 1;
+
+        for (let j = 0; j < nums.length; j++) {
+            if (i === j) continue;
+
+            tempMultiply *= nums[j];
+        }
+
+        answer[i] = tempMultiply;
     }
-  }
 
-  console.log({ hash });
-
-  return Object.values(hash);
+    return answer;
 };
