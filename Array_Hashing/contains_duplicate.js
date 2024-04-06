@@ -5,25 +5,25 @@
  * @return {boolean}
  */
 var containsDuplicate = function (nums) {
-  const hash = {};
+    const hash = {};
 
-  for (let el of nums) {
-    if (!hash[el]) {
-      hash[el] = 1;
-    } else {
-      hash[el]++;
+    for (let el of nums) {
+        if (!hash[el]) {
+            hash[el] = 1;
+        } else {
+            hash[el]++;
+        }
     }
-  }
 
-  let maxTemp = 1;
+    let maxTemp = 1;
 
-  for (let key in hash) {
-    if (hash[key] > maxTemp) {
-      return true;
+    for (let key in hash) {
+        if (hash[key] > maxTemp) {
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 };
 
 /**Problem Statement
@@ -51,3 +51,8 @@ Constraints:
 1 <= nums.length <= 105
 -109 <= nums[i] <= 109
  */
+
+arr = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+const newArr = new Set(arr);
+
+console.log("contains Duplicate", newArr.size !== arr.length);
