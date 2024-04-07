@@ -9,31 +9,62 @@
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-  let res = false;
-  let left = 0;
-  let right = s.length - 1;
+    let left = 0;
+    let right = s.length - 1;
 
-  while (left < right) {
-    // Skip non-alphanumeric characters from the left
-    while (left < right && !/^[A-Za-z0-9]+$/.test(s[left])) {
-      left++;
+    const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789".split("");
+    while (left < right) {
+        console.log("sleft", s[left]);
+
+        while (left < right && !alphabet.includes(s[left].toLowerCase())) {
+            left++;
+        }
+
+        while (left < right && !alphabet.includes(s[right].toLowerCase())) {
+            right--;
+        }
+
+        if (s[left]?.toLowerCase() === s[right]?.toLowerCase()) {
+            left++;
+            right--;
+        } else if (s[left]?.toLowerCase() !== s[right]?.toLowerCase()) {
+            return false;
+        }
     }
 
-    // Skip non-alphanumeric characters from the right
-    while (left < right && !/^[A-Za-z0-9]+$/.test(s[right])) {
-      right--;
+    return true;
+};
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+    let res = false;
+    let left = 0;
+    let right = s.length - 1;
+
+    while (left < right) {
+        // Skip non-alphanumeric characters from the left
+        while (left < right && !/^[A-Za-z0-9]+$/.test(s[left])) {
+            left++;
+        }
+
+        // Skip non-alphanumeric characters from the right
+        while (left < right && !/^[A-Za-z0-9]+$/.test(s[right])) {
+            right--;
+        }
+
+        // Compare the lowercase characters at left and right
+        if (s[left].toLowerCase() !== s[right].toLowerCase()) {
+            return false; // Not a palindrome
+        }
+
+        left++;
+        right--;
     }
 
-    // Compare the lowercase characters at left and right
-    if (s[left].toLowerCase() !== s[right].toLowerCase()) {
-      return false; // Not a palindrome
-    }
-
-    left++;
-    right--;
-  }
-
-  return true;
+    return true;
 };
 // console.log(isPalindrome("A man, a plan, a canal: Panama")); //true
 // console.log(isPalindrome("race a car")); //false
