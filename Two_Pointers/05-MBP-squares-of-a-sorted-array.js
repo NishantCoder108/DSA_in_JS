@@ -9,31 +9,31 @@
  * @return {number[]}
  */
 var sortedSquares = function (nums) {
-  const res = [];
+    const res = [];
 
-  let left = 0;
-  let right = nums.length - 1;
-  let maxRightIdx = nums.length - 1;
+    let left = 0;
+    let right = nums.length - 1;
+    let maxRightIdx = nums.length - 1;
 
-  while (left <= right) {
-    // equal sign giving because of left and right point to same element,adjustment of element of res,by maxRightIdx
-    const squareleftEle = nums[left] * nums[left];
-    const squareRightEle = nums[right] * nums[right];
+    while (left <= right) {
+        // equal sign giving because of left and right point to same element,adjustment of element of res,by maxRightIdx
+        const squareleftEle = nums[left] * nums[left];
+        const squareRightEle = nums[right] * nums[right];
 
-    if (squareleftEle <= squareRightEle) {
-      res[maxRightIdx] = squareRightEle;
-      maxRightIdx--;
+        if (squareleftEle <= squareRightEle) {
+            res[maxRightIdx] = squareRightEle;
+            maxRightIdx--;
 
-      right--;
-    } else if (squareleftEle > squareRightEle) {
-      res[maxRightIdx] = squareleftEle;
-      maxRightIdx--;
+            right--;
+        } else if (squareleftEle > squareRightEle) {
+            res[maxRightIdx] = squareleftEle;
+            maxRightIdx--;
 
-      left++;
+            left++;
+        }
     }
-  }
 
-  return res;
+    return res;
 };
 
 /**
@@ -65,3 +65,50 @@ nums is sorted in non-decreasing order.
 
 Follow up: Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
  */
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function (nums) {
+    let tempArr = [];
+
+    for (let num of nums) {
+        let temp = num * num;
+        tempArr.push(temp);
+    }
+
+    return tempArr.sort((a, b) => a - b);
+};
+
+console.log(8 ** 2);
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function (nums) {
+    let tempArr = [];
+
+    let left = 0;
+    let right = nums.length - 1;
+    let maxrightLen = nums.length - 1;
+
+    while (left <= right) {
+        const maxRightVal = nums[right] ** 2;
+        const maxLeftVal = nums[left] ** 2;
+
+        if (maxLeftVal < maxRightVal) {
+            tempArr[maxrightLen] = maxRightVal;
+
+            maxrightLen--;
+            right--;
+        } else {
+            tempArr[maxrightLen] = maxLeftVal;
+            left++;
+            maxrightLen--;
+        }
+    }
+
+    return tempArr;
+};
