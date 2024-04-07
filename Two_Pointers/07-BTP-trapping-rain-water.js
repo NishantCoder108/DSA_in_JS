@@ -3,30 +3,59 @@
  * -------------------------------
  * https://leetcode.com/problems/trapping-rain-water/submissions/
  */
+
 /**
  * @param {number[]} height
  * @return {number}
  */
 var trap = function (height) {
-  let left = 0,
-    right = height.length - 1;
-  let leftMax = 0,
-    rightMax = 0;
-  let waterTrapped = 0;
+    let left = 0;
+    let right = height.length - 1;
 
-  while (left < right) {
-    if (height[left] < height[right]) {
-      leftMax = Math.max(leftMax, height[left]);
-      waterTrapped += Math.max(0, leftMax - height[left]);
-      left++;
-    } else {
-      rightMax = Math.max(rightMax, height[right]);
-      waterTrapped += Math.max(0, rightMax - height[right]);
-      right--;
+    let leftMax = 0;
+    let rightMax = 0;
+
+    let trapWater = 0;
+
+    while (left < right) {
+        if (height[left] < height[right]) {
+            leftMax = Math.max(leftMax, height[left]);
+            trapWater += Math.max(0, leftMax - height[left]);
+            left++;
+        } else {
+            rightMax = Math.max(rightMax, height[right]);
+            trapWater += Math.max(0, rightMax - height[right]);
+            right--;
+        }
     }
-  }
 
-  return waterTrapped;
+    return trapWater;
+};
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function (height) {
+    let left = 0,
+        right = height.length - 1;
+    let leftMax = 0,
+        rightMax = 0;
+    let waterTrapped = 0;
+
+    while (left < right) {
+        if (height[left] < height[right]) {
+            leftMax = Math.max(leftMax, height[left]);
+            waterTrapped += Math.max(0, leftMax - height[left]);
+            left++;
+        } else {
+            rightMax = Math.max(rightMax, height[right]);
+            waterTrapped += Math.max(0, rightMax - height[right]);
+            right--;
+        }
+    }
+
+    return waterTrapped;
 };
 
 /**
