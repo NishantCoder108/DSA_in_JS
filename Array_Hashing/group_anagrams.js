@@ -10,7 +10,7 @@ var groupAnagrams = function (strs) {
     for (let el of strs) {
         const sortEl = el.split("").sort().join("");
 
-        if (!hash[sortEl]) {
+        if (hash[sortEl] !== undefined) {
             hash[sortEl] = [el];
         } else {
             hash[sortEl].push(el);
@@ -63,7 +63,7 @@ console.log({ j });
 
 const hash = { a: 1, b: 4 };
 
-let objHahs = [Object.values(hash)];
+let objHahs = Math.max(...[...Object.values(hash)]);
 console.log({ objHahs });
 
 console.log(""?.split("").sort().join(""));
